@@ -15,8 +15,8 @@ fi
 # Issue a request for the metadata service to get the current project identifier
 export PROJECT_ID=$(curl -s 'http://metadata/computeMetadata/v1/project/project-id' -H 'Metadata-Flavor: Google')
 
-sudo docker build -t guestbook  .
+docker build -t guestbook  .
 
-sudo docker tag guestbook "${GCR_PREFIX}/${PROJECT_ID}/guestbook"
+docker tag guestbook "${GCR_PREFIX}/${PROJECT_ID}/guestbook"
 
 gcloud docker push "${GCR_PREFIX}/${PROJECT_ID}/guestbook"
